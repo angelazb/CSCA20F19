@@ -1,5 +1,10 @@
 import csv
 
+# Make sure this file is in the same folder as the .py file
+FILE_NAME = "store_items.csv"
+# Set the minimum stock
+MIN_STOCK = 50
+
 def read_csv():
     ''' () -> (list, list)
 
@@ -238,11 +243,8 @@ def low_in_stock():
         # Every row in the database is a list itself, and we need to check
         # we find the right item
         if int(item_record[4]) < MIN_STOCK:
-            # If the item has a colour, specify what colour it is
-            if item_record[2] != "":
-                item = item_record[2] + " " + item_record[1]
-            else:
-                item = item_record[1]
+            # Specify what colour it is
+            item = item_record[2] + " " + item_record[1]
             # Add the item to the list
             low_items.append(item)
     return low_items
@@ -349,12 +351,6 @@ def get_csv():
 #########################################################################
 #########################################################################
 # Find the global code below:
-
-# Make sure this file is in the same folder as the .py file
-FILE_NAME = "store_items.csv"
-# Set the minimum stock
-MIN_STOCK = 50
-
 # Read the data just so we can see it
 csv_header, csv_data = read_csv()
 # Let's print the header of our csv file, which we are keeping separate from
